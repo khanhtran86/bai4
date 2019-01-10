@@ -33,33 +33,16 @@ public class Lession04 {
 	  
 	   public ArrayList Get_Sochan() {
 		
+		ArrayList lstSochan = new ArrayList();
 		
-		ArrayList sochan = new ArrayList();
-		
-		//boolean sochan1 = false;
-		
-		for (int i = 0; i < arrNumber.length; i++) {
-			
-			int currsochan = arrNumber [i];
-			
-			boolean issochan = true;
-			
-			for (int k = 0; k < currsochan; k++) {
-				if (currsochan % k != 0) {
-					issochan = false;
-					break;
-					
-					}	
-		
-				}
-			if (issochan== true) {
-			sochan .add(currsochan);
-				}
+		for(int i=0; i< arrNumber.length; i++){
+			if(i%2==0)
+			{
+				lstSochan.add(i);
 			}
-			
-					return sochan;
+		}
 		   
-		
+		return lstSochan;
 	}
 
 	
@@ -88,7 +71,69 @@ public class Lession04 {
 		return sole;
 	}
 
-	
+	public ArrayList GetSum()
+	{
+		//Mang luu tong 
+		ArrayList lstSumNumber = new ArrayList();
+		//Get sochan va sole
+		ArrayList lstSoChan = this.Get_Sochan();
+		ArrayList lstSoLe = this.Get_Sole();
+		
+		if(lstSoChan.size() > lstSoLe.size())
+		{
+			for(int i=0; i<lstSoChan.size(); i++)
+			{
+				if(i<lstSoLe.size())
+				{
+					int sochan = (int)lstSoChan.get(i);
+					int sole = (int)lstSoLe.get(i);
+					lstSumNumber.add(sochan+sole);
+				}
+				else
+				{
+					lstSumNumber.add(lstSoChan.get(i));
+				}
+			}
+		}
+		else
+		{
+			for(int i=0; i<lstSoLe.size(); i++)
+			{
+				if(i<lstSoChan.size())
+				{
+					int sochan = (int)lstSoChan.get(i);
+					int sole = (int)lstSoLe.get(i);
+					lstSumNumber.add(sochan+sole);
+				}
+				else
+				{
+					lstSumNumber.add(lstSoLe.get(i));
+				}
+			}
+		}
+		
+		//Cach 2
+		//Kiem tra xem mang nao la mang ngan hon thi them cac phan tu 0 vao sau sao cho do dai 2 mang bang nhau
+		//Sau do chay tu dau den cuoi mang bat ky roi cong don lai vs nhau
+		
+		if(lstSoChan.size() <lstSole.size())
+		{
+			for(int i = lstSoChan.size(); i< lstSole.size(); i++)
+				lstSoChan.add(0);
+		}
+		else
+		{
+			for(int i = lstSole.size(); i< lstSoChan.size(); i++)
+				lstSole.add(0);
+		}
+		
+		for(int i=0; i< lstSole.size(); i++)
+		{
+			int sochan = (int)lstSoChan.get(i);
+			int sole = (int)lstSoLe.get(i);
+			lstSumNumber.add(sochan+sole);
+		}
+		   
 	}
 }
 	
